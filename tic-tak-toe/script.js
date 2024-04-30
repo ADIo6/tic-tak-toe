@@ -17,18 +17,25 @@ const winPatterns = [
     [6, 7, 8],
 ];
 
+let count=0;
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
-        console.log("box was clicked")
+        count++;
+        console.log("box was clicked",count)
+        
+    
         if (turnO) {
             box.innerText = 'O';
+            
+            // count++;
             turnO = false;
-
+            
         }
+    
         else {
             box.innerText = 'X';
             turnO = true;
-
+            // count++;
         }
         box.disabled = true;
 
@@ -36,10 +43,15 @@ boxes.forEach((box) => {
     })
 });
 
+
 const showWinner=(winner)=>{
     msg.innerText=`congrats, Winner is ${winner}`
     msgContainer.classList.remove("hide")
     disableBoxes();
+};
+const Draw=(draw)=>{
+    msg.innerText=`It's a Draw, Wanna play again?`
+    msgContainer.classList.remove("hide")
 };
 
 const disableBoxes=()=>{
@@ -70,14 +82,29 @@ const checkWinner = () => {
                     console.log("Winner",pos1Val);
                     showWinner(pos1Val);
                 }
+                
+                else if(count===9){
+                    Draw();
+                    console.log("Draw")
+
+                }
+
+                //use a new variable count, which counts button clicks. When the total count reaches 9 but Game has no winners, that means the game was draw.
             }
     }
 
 }
+// const Draw=()=>{
+//     let count.addEventListener("click"Draw)
+//     if(count===9){
 
+
+//     }
+// }
 const resetGame=()=>{
     turnO=true;
     enableBoxes();
+    count=0;
     msgContainer.classList.add("hide");
 
 };
