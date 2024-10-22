@@ -38,7 +38,7 @@ boxes.forEach((box) => {
             // count++;
         }
         box.disabled = true;
-
+        
         checkWinner();
     })
 });
@@ -80,10 +80,15 @@ const checkWinner = () => {
                 if(pos1Val===pos2Val && pos2Val===pos3Val){
 
                     console.log("Winner",pos1Val);
-                    showWinner(pos1Val);
+                    return showWinner(pos1Val);
                 }
                 
-                else if(count===9){
+                else if(count===9 &&(pos1Val===pos2Val && pos2Val===pos3Val) ){
+                    console.log("Winner",pos1Val);
+                    return showWinner(pos1Val);
+                   
+                }
+                else if(count===9 && pos1Val!=pos2Val && pos2Val!=pos3Val){
                     Draw();
                     console.log("Draw")
 
