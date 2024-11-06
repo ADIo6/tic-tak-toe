@@ -49,7 +49,7 @@ const showWinner=(winner)=>{
     msgContainer.classList.remove("hide")
     disableBoxes();
 };
-const Draw=(draw)=>{
+const Draw=()=>{
     msg.innerText=`It's a Draw, Wanna play again?`
     msgContainer.classList.remove("hide")
 };
